@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/To-Do-Fem/static/css/main.3241046f.css",
+    "main.js": "/To-Do-Fem/static/js/main.71801e3d.js",
+    "static/media/bg-desktop-light.jpg": "/To-Do-Fem/static/media/bg-desktop-light.3508d620efd5a52bb4ce.jpg",
+    "static/media/bg-desktop-dark.jpg": "/To-Do-Fem/static/media/bg-desktop-dark.73e47dbb723ebc772ef0.jpg",
+    "index.html": "/To-Do-Fem/index.html",
+    "static/media/icon-sun.svg": "/To-Do-Fem/static/media/icon-sun.910b1f9a23741afc341e95653a51f14f.svg",
+    "static/media/icon-moon.svg": "/To-Do-Fem/static/media/icon-moon.6c03114b495d05f4380b3c544d9afe2a.svg",
+    "main.3241046f.css.map": "/To-Do-Fem/static/css/main.3241046f.css.map",
+    "main.71801e3d.js.map": "/To-Do-Fem/static/js/main.71801e3d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3241046f.css",
+    "static/js/main.71801e3d.js"
+  ]
+}
