@@ -7,7 +7,11 @@ const initialState = [
   { id: 3, title: "10 minutes meditation", active: true },
   { id: 4, title: "Read for 1 hour", active: true },
   { id: 5, title: "Pick up groceries", active: true },
-  { id: 5, title: "Complete Todo App on Frontend Mentor", active: true },
+  {
+    id: 6,
+    title: "Complete Todo App on Frontend Mentor",
+    active: true,
+  },
 ];
 
 const TodoSlice = createSlice({
@@ -28,11 +32,20 @@ const TodoSlice = createSlice({
         };
       },
     },
+    toggleTodoActive: (state, action) => {
+      const todo = state.find((item) => item.id === action.payload);
+      if (todo) {
+        todo.active = !todo.active;
+      }
+    },
+    deleteInactive: (state) => {
+      return state.filter((todo) => todo.active);
+    },
   },
 });
 
 export const selectAllTodo = (state) => state.todo;
 
-export const { addTodo } = TodoSlice.actions;
+export const { addTodo, toggleTodoActive, deleteInactive } = TodoSlice.actions;
 
 export default TodoSlice.reducer;
