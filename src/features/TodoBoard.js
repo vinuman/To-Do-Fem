@@ -12,6 +12,14 @@ const TodoBoard = () => {
   const board = useSelector(selectedBoard);
   const light = useSelector(selectedLightMode);
   const activeCards = todos.filter((item) => item.active === true).length;
+
+  const deleteItems = () => {
+    const existingTodos = JSON.parse(localStorage.getItem("todos")) || [];
+    const newTodo = existingTodos.filter((todo) => todo.active === true);
+    localStorage.setItem("todos", JSON.stringify(newTodo));
+
+    dispatch(deleteInactive());
+  };
   return (
     <>
       <div
@@ -53,7 +61,7 @@ const TodoBoard = () => {
           </p>
         </div>
         <p
-          onClick={() => dispatch(deleteInactive())}
+          onClick={deleteItems}
           className="text-black-600 font-bold text-[#9495A5] cursor-pointer hover:text-[#494C6B]"
         >
           Clear completed

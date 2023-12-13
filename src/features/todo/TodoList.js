@@ -13,8 +13,20 @@ const TodoList = () => {
   const light = useSelector(selectedLightMode);
 
   const handleTodoItem = (id) => {
+    const existingTodos = JSON.parse(localStorage.getItem("todos")) || [];
+    /* const updatedTodos = existingTodos.map((todo) => {
+      if (todo.id == id) {
+        todo = {
+          ...todo,
+          active: !todo.active,
+        };
+      }
+    });
+    localStorage.setItem("todos", JSON.stringify(updatedTodos)); */
     dispatch(toggleTodoActive(id));
   };
+
+  console.log("the todos---", todos);
 
   const todolistAll = todos.map((todo, index) => (
     <div

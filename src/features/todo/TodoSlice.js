@@ -1,7 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { nanoid } from "@reduxjs/toolkit";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const initialState = [
+const loadState = () => {
+  try {
+    const serializedState = localStorage.getItem("todos");
+    if (serializedState === null) {
+      return undefined;
+    }
+    return JSON.parse(serializedState);
+  } catch (err) {
+    return undefined;
+  }
+};
+
+const initialState = loadState() || [
   { id: 1, title: "Jog around park 3x", active: true },
   { id: 2, title: "Complete JavaScript", active: false },
   { id: 3, title: "10 minutes meditation", active: true },
@@ -21,15 +34,6 @@ const TodoSlice = createSlice({
     addTodo: {
       reducer(state, action) {
         state.push(action.payload);
-      },
-      prepare(title) {
-        return {
-          payload: {
-            id: nanoid(),
-            title,
-            active: true,
-          },
-        };
       },
     },
     toggleTodoActive: (state, action) => {

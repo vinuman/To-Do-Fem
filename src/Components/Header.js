@@ -12,6 +12,7 @@ import {
   selectedLightMode,
   toggleDarkMode,
 } from "../features/darkmode/DarkSlice";
+import { nanoid } from "@reduxjs/toolkit";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,23 @@ const Header = () => {
 
   const handleToDoSubmit = () => {
     if (input.trim()) {
-      dispatch(addTodo(input));
+      const existingTodos = JSON.parse(localStorage.getItem("todos")) || [];
+      const updatedTodos = [
+        ...existingTodos,
+        {
+          id: nanoid(),
+          title: input,
+          active: true,
+        },
+      ];
+      localStorage.setItem("todos", JSON.stringify(updatedTodos));
+      dispatch(
+        addTodo({
+          id: nanoid(),
+          title: input,
+          active: true,
+        })
+      );
     }
     setInput("");
   };
