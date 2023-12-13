@@ -14,15 +14,23 @@ const TodoList = () => {
 
   const handleTodoItem = (id) => {
     const existingTodos = JSON.parse(localStorage.getItem("todos")) || [];
-    /* const updatedTodos = existingTodos.map((todo) => {
-      if (todo.id == id) {
-        todo = {
-          ...todo,
-          active: !todo.active,
-        };
-      }
-    });
-    localStorage.setItem("todos", JSON.stringify(updatedTodos)); */
+
+    const todoIndex = existingTodos.findIndex((todo) => todo.id === id);
+
+    let updatedTodo = {
+      id,
+      title: existingTodos[todoIndex].title,
+      active: !existingTodos[todoIndex].active,
+    };
+
+    const newTodo = [
+      ...existingTodos.slice(0, todoIndex),
+      ...existingTodos.slice(todoIndex + 1),
+      updatedTodo,
+    ];
+
+    localStorage.setItem("todos", JSON.stringify(newTodo));
+
     dispatch(toggleTodoActive(id));
   };
 

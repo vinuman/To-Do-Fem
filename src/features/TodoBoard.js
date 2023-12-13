@@ -16,6 +16,8 @@ const TodoBoard = () => {
   const deleteItems = () => {
     const existingTodos = JSON.parse(localStorage.getItem("todos")) || [];
     const newTodo = existingTodos.filter((todo) => todo.active === true);
+    console.log("testtt", newTodo);
+
     localStorage.setItem("todos", JSON.stringify(newTodo));
 
     dispatch(deleteInactive());
